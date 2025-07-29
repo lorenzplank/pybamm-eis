@@ -39,13 +39,14 @@ class EISSimulation:
         submesh_types=None,
         var_pts=None,
         spatial_methods=None,
+        initial_soc = None
     ):
         # Set attributes
         self.model_name = model.name
         self.set_up_time = None
         self.solve_time = None
         timer = pybamm.Timer()
-
+        self.initial_soc = initial_soc
         # Set up the model for EIS
         pybamm.logger.info(f"Start setting up {self.model_name} for EIS")
         self.model = self.set_up_model_for_eis(model)
@@ -61,7 +62,7 @@ class EISSimulation:
             var_pts=var_pts,
             spatial_methods=spatial_methods,
         )
-        sim.build()
+        sim.build(initial_soc = initial_soc)
         self.built_model = sim.built_model
 
         # Get scale factor for the impedance (PyBaMM model may have set scales for the
