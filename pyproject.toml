@@ -13,6 +13,9 @@ dependencies = [
     "matplotlib",
 ]
 
+[tool.uv.sources]
+pybamm = { git = "https://github.com/lorenzplank/PyBaMM.git", tag = "v26.0.0" }
+
 [project.optional-dependencies]
 dev = [
     "pytest",
@@ -27,6 +30,8 @@ docs = [
     "mathjax",
     "myst-parser",
 ]
+
+
 
 [tool.setuptools.packages.find]
 where = ["."]
